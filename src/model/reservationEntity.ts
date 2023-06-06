@@ -1,6 +1,7 @@
 import {
   Column,
   Entity,
+  JoinColumn,
   ManyToOne,
   OneToOne,
   PrimaryGeneratedColumn,
@@ -20,12 +21,15 @@ export class Reservation {
   reservationDate: number;
 
   @OneToOne(() => Movies, (movies) => movies.reservation)
+  @JoinColumn()
   movies: Movies;
 
   @ManyToOne(() => User, (user) => user.reservation)
+  @JoinColumn()
   user: User;
 
   @OneToOne(() => ShowTime, (showtime) => showtime.reservation)
+  @JoinColumn()
   showTime: ShowTime;
 
   @ManyToOne(() => Ticket, (ticket) => ticket.reservation)

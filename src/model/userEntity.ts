@@ -27,7 +27,7 @@ export class User {
   contactNumber: number;
 
   @Column({ type: "enum", enum: UserType, default: UserType.USER })
-  user: UserType;
+  userType: UserType;
 
   @OneToMany(() => Wishlist, (wishlist) => wishlist.user)
   wishlist: Wishlist[];

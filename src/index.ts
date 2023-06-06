@@ -2,7 +2,9 @@ import bodyParser from "body-parser";
 import express, { Express } from "express";
 import dotenv from "dotenv";
 import morgan from "morgan";
-import { dbConnect } from "./database/dbConnect";
+import { AppDataSource } from "./services/AppDataSource";
+import userRoute from "./route/userRoute";
+import categoryRoute from "./route/categoryRoute";
 
 dotenv.config();
 
@@ -13,9 +15,17 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(morgan("combined"));
 
-const PORT = process.env.PORT || 5555;
+app.use("/user", userRoute);
+app.use("/category", categoryRoute);
 
-dbConnect();
-app.listen(PORT, () => {
+const PORT = process.env.PORT || 8000;
+
+app.listen(PORT, async () => {
+  await AppDataSource.initialize()
+    .then(async () => {
+      console.log("DB connected");
+    })
+    .catch((e) => console.log("Error connecting database", e));
+
   console.log(`Server running on ${process.env.PORT}`);
 });
