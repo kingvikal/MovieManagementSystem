@@ -16,10 +16,10 @@ export class ShowTime {
   @PrimaryGeneratedColumn()
   showtimeId: number;
 
-  @Column({ type: "timestamp with local time zone" })
+  @Column()
   startTime: Date;
 
-  @Column({ type: "timestamp with local time zone" })
+  @Column()
   endTime: Date;
 
   @Column()

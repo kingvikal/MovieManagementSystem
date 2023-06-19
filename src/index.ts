@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import morgan from "morgan";
 import { AppDataSource } from "./services/AppDataSource";
 import userRoute from "./route/userRoute";
+import movieRoute from "./route/moviesRoute";
 import categoryRoute from "./route/categoryRoute";
 
 dotenv.config();
@@ -17,6 +18,7 @@ app.use(morgan("combined"));
 
 app.use("/user", userRoute);
 app.use("/category", categoryRoute);
+app.use("/movie", movieRoute);
 
 const PORT = process.env.PORT || 8000;
 

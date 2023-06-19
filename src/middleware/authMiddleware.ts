@@ -28,9 +28,10 @@ export const IsUser = async (
     }
 
     const decoded: any = jwt.verify(token, process.env.JWT_SECRET);
+    // console.log("decoded", decoded);
 
     const user: any = await userRepository.findOne({
-      where: {},
+      where: { userId: decoded.id },
     });
 
     if (!user) {
@@ -42,5 +43,24 @@ export const IsUser = async (
   } catch (err) {
     console.log(err);
     return res.status(500).json(err);
+  }
+};
+
+export const IsAdmin = async (
+  req: RequestUser,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    if (!["admin"].includes(req.user.userType)) {
+      return res.status(420).json({
+        error: "Unauthorized",
+        message: "Sorry! You dont have access",
+      });
+    }
+    next();
+  } catch (e) {
+    console.log(e);
+    return res.status(500).json(e);
   }
 };

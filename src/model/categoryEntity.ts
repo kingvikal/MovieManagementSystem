@@ -13,6 +13,7 @@ enum CategoryType {
   ROMANCE = "romance",
   MYSTERY = "mystery",
   ALL = "all",
+  MYTHICAL = "mythical"
 }
 @Entity()
 export class Category {

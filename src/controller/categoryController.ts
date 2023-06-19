@@ -35,7 +35,9 @@ export const createCategory = async (req: Request, res: Response) => {
 
 export const getAllCategory = async (req: Request, res: Response) => {
   try {
-    const getAll = await categoryRepo.find({});
+    const getAll = await categoryRepo.find({
+      relations: { movies: true },
+    });
 
     if (getAll) {
       return res.status(200).json({ data: getAll });

@@ -24,7 +24,7 @@ export class User {
   address: string;
 
   @Column({ nullable: true })
-  contactNumber: number;
+  contactNumber: string;
 
   @Column({ type: "enum", enum: UserType, default: UserType.USER })
   userType: UserType;

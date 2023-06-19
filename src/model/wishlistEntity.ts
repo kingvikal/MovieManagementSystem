@@ -1,4 +1,4 @@
-import { Entity, ManyToOne, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { User } from "./userEntity";
 import { Movies } from "./moviesEntity";
 
@@ -10,6 +10,6 @@ export class Wishlist {
   @ManyToOne(() => User, (user) => user.wishlist)
   user: User;
 
-  @OneToOne(() => Movies, (movies) => movies.wishList)
-  movies: Movies;
+  @OneToMany(() => Movies, (movies) => movies.wishList)
+  movies: Movies[];
 }
