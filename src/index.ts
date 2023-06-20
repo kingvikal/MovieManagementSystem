@@ -6,7 +6,8 @@ import { AppDataSource } from "./services/AppDataSource";
 import userRoute from "./route/userRoute";
 import movieRoute from "./route/moviesRoute";
 import categoryRoute from "./route/categoryRoute";
-
+import wishlistRoute from "./route/wishlistRoute";
+import reservationRoute from "./route/reservationRoute";
 dotenv.config();
 
 const app: Express = express();
@@ -19,6 +20,8 @@ app.use(morgan("combined"));
 app.use("/user", userRoute);
 app.use("/category", categoryRoute);
 app.use("/movie", movieRoute);
+app.use("/wishlist", wishlistRoute);
+app.use("/reservation", reservationRoute);
 
 const PORT = process.env.PORT || 8000;
 

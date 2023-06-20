@@ -1,4 +1,10 @@
-import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from "typeorm";
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  OneToMany,
+  JoinColumn,
+} from "typeorm";
 import { Wishlist } from "./wishlistEntity";
 import { Reservation } from "./reservationEntity";
 

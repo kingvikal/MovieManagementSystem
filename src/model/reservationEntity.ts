@@ -18,7 +18,7 @@ export class Reservation {
   reservationId: number;
 
   @Column()
-  reservationDate: number;
+  reservationDate: Date;
 
   @OneToOne(() => Movies, (movies) => movies.reservation)
   @JoinColumn()

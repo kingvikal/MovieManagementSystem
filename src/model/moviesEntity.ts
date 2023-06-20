@@ -38,7 +38,7 @@ export class Movies {
   @JoinColumn()
   category: Category;
 
-  @ManyToOne(() => Wishlist, (wishlist) => wishlist.movies)
+  @ManyToOne(() => Wishlist, (wishlist) => wishlist.movies, {})
   wishList: Wishlist;
 
   @ManyToMany(() => Theater, (theater) => theater.movies)
